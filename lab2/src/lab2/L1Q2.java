@@ -14,18 +14,40 @@ public class L1Q2 {
     /**
      * @param args the command line arguments
      */
+    public class L2Q1 {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        System.out.println(permuteString("ABC"));
+        // TODO code application logic here
+         String s = "ABC"; 
+        int n = s.length(); 
+        permuteString(s, 0, n-1); 
     }
     
-   public static String permuteString(String s){
-       while(s.length()>1){
-      return position(s.charAt(0),s.substring(1))+ (s.substring(1));}
-       return s;
-   } 
-   
-   public static String position(char a , String s){
-       return a + s +"\n" + s+a + "\n" ;
-       
-   }
-}
+    public static void permuteString(String s, int l, int r) { 
+        if (l == r) 
+            System.out.println(s); 
+        else
+        { 
+            for (int i = l; i <= r; i++) 
+            { 
+                s = swap(s,l,i); 
+                permuteString(s, l+1, r); 
+                s = swap(s,l,i); 
+            } 
+        } 
+    } 
+    
+     public static String swap(String a, int i, int j) 
+    { 
+        char temp; 
+        char[] charArray = a.toCharArray(); 
+        temp = charArray[i] ; 
+        charArray[i] = charArray[j]; 
+        charArray[j] = temp; 
+        return String.valueOf(charArray); 
+    } 
+  
+} 
